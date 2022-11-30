@@ -29,13 +29,32 @@ namespace Schuelerbewertung
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.teacherControl1 = new Schuelerbewertung.TeacherControl();
+            this.SuspendLayout();
+            // 
+            // teacherControl1
+            // 
+            this.teacherControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teacherControl1.Location = new System.Drawing.Point(0, 0);
+            this.teacherControl1.Name = "teacherControl1";
+            this.teacherControl1.Size = new System.Drawing.Size(800, 450);
+            this.teacherControl1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.teacherControl1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private TeacherControl teacherControl1;
     }
 }
 

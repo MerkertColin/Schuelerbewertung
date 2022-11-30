@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Schuelerbewertung {
@@ -15,6 +10,8 @@ namespace Schuelerbewertung {
             DataSource = new ProjectCreationControlDataSource();
         }
 
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ProjectCreationControlDataSource DataSource {
             get => dataSource;
             set {
@@ -31,10 +28,6 @@ namespace Schuelerbewertung {
             automaticRadioButton.DataBindings.Add(nameof(automaticRadioButton.Checked), dataSource, nameof(dataSource.AutomaticGeneration));
             randomRadioButton.DataBindings.Add(nameof(randomRadioButton.Checked), dataSource, nameof(dataSource.RandomGeneration));
             manuelRadioButton.DataBindings.Add(nameof(manuelRadioButton.Checked), dataSource, nameof(dataSource.ManualGeneration));
-        }
-
-        private void handleNextPageButtonClick(object sender, EventArgs e) {
-
         }
 
         private ProjectCreationControlDataSource dataSource;
