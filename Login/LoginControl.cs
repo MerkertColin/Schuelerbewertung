@@ -1,37 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using Schuelerbewertung.Database;
+using Schuelerbewertung.EvArgs;
+using System;
 using System.Windows.Forms;
 
 namespace Schuelerbewertung.Student
 {
     public partial class LoginControl : UserControl
     {
-        public event EventHandler LoginSuccessful;
+        public event EventHandler<LoginSuccessfulEventArgs> LoginSuccessful;
         public LoginControl()
         {
             InitializeComponent();
             ctrlLoginInput.LoginClick += OnLoginClick;
-
         }
 
         private void OnLoginClick( object sender, EventArgs e )
         {
-            bool bLoginSuccessful = TestLogin();
+            DbConnection con = DbConnection.GetInstance();
+            bool bLoginSuccessful = con.Connect( ctrlLoginInput.Username, ctrlLoginInput.Password );
             if ( bLoginSuccessful )
             {
-                LoginSuccessful?.Invoke( sender, e );
+                LoginSuccessful?.Invoke( sender, new LoginSuccessfulEventArgs( ctrlLoginInput.Username ) );
             }
         }
-
-        private bool TestLogin()
-        {
-            return "test" == ctrlLoginInput.Username && "test123" == ctrlLoginInput.Password;
-        }
-
-
     }
 }

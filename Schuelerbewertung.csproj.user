@@ -19,5 +19,17 @@
     <Compile Update="Student\StudentInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Student\StudentProjectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Tables\ProjectTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Tables\RatingTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Tables\StudentTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -10,6 +10,9 @@ namespace Schuelerbewertung.Student
 {
     public partial class CriteriaSliderControl : UserControl
     {
+     
+        public string CategoryName { get => gbCategory.Text; }
+        public int SliderValue { get => trbSlider.Value; }
         public CriteriaSliderControl()
         {
             InitializeComponent();
@@ -28,6 +31,18 @@ namespace Schuelerbewertung.Student
         private void nbNumberBox_ValueChanged(object sender, EventArgs e)
         {
             trbSlider.Value = (int)nbNumberBox.Value;
+        }
+
+        public void SetDefault( int nDefault )
+        {
+            trbSlider.Value = nDefault;
+            nbNumberBox.Value = nDefault;
+        }
+
+        public void LockInput( bool bLock )
+        {
+            trbSlider.Enabled = !bLock;
+            nbNumberBox.Enabled = !bLock;
         }
     }
 }
