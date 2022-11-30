@@ -28,12 +28,13 @@ namespace Schuelerbewertung {
                 manualGroupCreationControl1.Visible = true;
 
                 if (manualGroupCreationControl1.DataSource.Groups.Count < manualGroupCreationControl1.DataSource.GroupCount) {
-
+                    manualGroupCreationControl1.NextPage();
                 } else {
-                    this.Close();
+					// Gruppen an die Datenbank schicken
+					this.Close();
                 }
             } else {
-
+                // Gruppen erstellen und an die Datenbank schicken
                 this.Close();
             }
         }
