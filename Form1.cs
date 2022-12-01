@@ -1,4 +1,4 @@
-﻿using Schuelerbewertung.Database;
+using Schuelerbewertung.Database;
 using Schuelerbewertung.EvArgs;
 using System;
 using System.Collections.Generic;

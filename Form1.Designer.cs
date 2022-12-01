@@ -1,4 +1,3 @@
-﻿
 namespace Schuelerbewertung
 {
     partial class Form1
@@ -96,12 +95,14 @@ namespace Schuelerbewertung
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+
             this.Controls.Add(this.noGroupAssignedControl1);
             this.Controls.Add(this.noStudentView);
             this.Controls.Add(this.submittedRatingView);
             this.Controls.Add(this.studentRatingView);
             this.Controls.Add(this.loginView);
             this.Controls.Add(this.studentProjectView);
+            
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
