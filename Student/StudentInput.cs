@@ -13,7 +13,7 @@ namespace Schuelerbewertung.Student
     {
         private List<CriteriaSliderControl> _criteriaSlider;
         public string StudentName { get => lbStudentName.Text; }
-        public int StudentId { get; private set; }
+        private StudentData _student;
 
         public StudentInput()
         {
@@ -22,10 +22,11 @@ namespace Schuelerbewertung.Student
             InitCategories();
         }
         
-        public StudentInput( int nId, string sName )
+        public StudentInput( StudentData student )
         {
-            StudentId = nId;
-            lbStudentName.Text = sName;
+            InitializeComponent();
+            _student = student;
+            lbStudentName.Text = _student.Name;
             _criteriaSlider = new List<CriteriaSliderControl>();
             InitCategories();
         }
@@ -34,7 +35,7 @@ namespace Schuelerbewertung.Student
         {
             for (int i = 0; i < 7; i++)
             {
-                CriteriaSliderControl csc = new CriteriaSliderControl();
+                CriteriaSliderControl csc = new CriteriaSliderControl( $"Kat{i+1}");
                 _criteriaSlider.Add( csc );
             }
             flpCriteriaDisplay.Controls.AddRange( _criteriaSlider.ToArray() );
@@ -48,7 +49,7 @@ namespace Schuelerbewertung.Student
             {
                 categoryRatings.Add( new CategoryRating( csc.CategoryName, csc.SliderValue ) );
             }
-            res = new StudentRating( StudentName, categoryRatings );
+            res = new StudentRating( _student.ID, _student.Name, categoryRatings );
             return res;
         }
     }

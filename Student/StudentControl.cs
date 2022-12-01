@@ -1,6 +1,7 @@
 ﻿using Schuelerbewertung.Data;
 using Schuelerbewertung.Database;
 using Schuelerbewertung.Student;
+using Schuelerbewertung.Tables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,32 +15,43 @@ namespace Schuelerbewertung
     public partial class StudentControl : UserControl
     {
         private List<StudentInput> _studentInputFields;
+        public event EventHandler RatingSubmitted;
+        public event EventHandler NoGroupAssigned;
+        private string _username;
+        private int _groupId;
+
         public StudentControl()
         {
             InitializeComponent();
             _studentInputFields = new List<StudentInput>();
-            InitStudents();
+            //InitStudents();
         }
 
         /// <summary>
-        /// [TEST] Mehtode zum testweise Erstellen von StudenInputs
+        /// Generiert die Bewertungseingabe für jedes Gruppenmitglied
         /// </summary>
-        private void InitStudents()
+        /// <param name="sUsername">Nutzername des angemeldeten Nutzers</param>
+        public void GenerateInputMask( string sUsername )
         {
-            string[] students = new string[]
+            _username = sUsername;
+            GroupTable group = new GroupTable( sUsername );
+            if ( group.HasResults )
             {
-                "Friedrich",
-                "Johann",
-                "Jürgen",
-                "Sabine"
-            };
-
-            for (int i = 0; i < 4; i++)
-            {
-                StudentInput si = new StudentInput( i + 1, students[i] );
-                _studentInputFields.Add( si );
+                _groupId = group.GroupID;
+                foreach (StudentData groupMember in group.GroupMembers)
+                {
+                    if (groupMember != null)
+                    {
+                        StudentInput si = new StudentInput(groupMember);
+                        _studentInputFields.Add(si);
+                    }
+                }
+                flpStudentDisplay.Controls.AddRange(_studentInputFields.ToArray());
             }
-            flpStudentDisplay.Controls.AddRange( _studentInputFields.ToArray() );
+            else
+            {
+                NoGroupAssigned?.Invoke( null, null );
+            }
         }
 
         /// <summary>
@@ -58,8 +70,10 @@ namespace Schuelerbewertung
                     categories.Add(categoryRating.CategoryName);
                     values.Add(categoryRating.Value.ToString());
                 }
-                sQuery = $"INSERT INTO bewertungen ( bewerter, {String.Join( ',', categories )}) VALUES ({String.Join( ',', values )})";
+                sQuery = $"INSERT INTO bewertungen ( gruppenid, bewerter, schuelerid, {String.Join( ',', categories )}) VALUES ( {_groupId}, (SELECT SchuelerID FROM schueler WHERE nutzername='{_username}'), {studentRating.StudentId}, {String.Join( ',', values )})";
                 con.ExecuteNoReturn(sQuery);
+                categories.Clear();
+                values.Clear();
             }
         }
 
@@ -72,7 +86,7 @@ namespace Schuelerbewertung
             }
 
             InsertRatingsIntoDatabase( ratings );
-            //Daten in Datenbank einpflegen
+            RatingSubmitted?.Invoke( sender, e );
         }
     }
 }

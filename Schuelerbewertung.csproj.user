@@ -13,6 +13,12 @@
     <Compile Update="Login\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Student\NoGroupAssignedControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Student\NoStudentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Student\StudentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -21,6 +27,12 @@
     </Compile>
     <Compile Update="Student\StudentProjectControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Student\StudentSubmittedRatingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Tables\GroupTable.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="Tables\ProjectTable.cs">
       <SubType>Component</SubType>

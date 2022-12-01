@@ -18,7 +18,7 @@ namespace Schuelerbewertung.Student
 
         public void Update( string sUsername )
         {
-            ProjectTable studentTable = new ProjectTable( 1 );
+            GroupTable studentTable = new GroupTable( sUsername );
             dgvRatings.DataSource = studentTable;
         }
         

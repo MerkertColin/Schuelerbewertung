@@ -20,6 +20,7 @@ namespace Schuelerbewertung.Student
 
         public CriteriaSliderControl( string sCriterium )
         {
+            InitializeComponent();
             gbCategory.Text = sCriterium;
         }
 

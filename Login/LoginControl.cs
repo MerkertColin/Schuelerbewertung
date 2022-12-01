@@ -22,6 +22,10 @@ namespace Schuelerbewertung.Student
             {
                 LoginSuccessful?.Invoke( sender, new LoginSuccessfulEventArgs( ctrlLoginInput.Username ) );
             }
+            else
+            {
+                MessageBox.Show( "Login Failed" );
+            }
         }
     }
 }

@@ -30,11 +30,9 @@ namespace Schuelerbewertung
         private void InitializeComponent()
         {
             this.flpStudentDisplay = new System.Windows.Forms.FlowLayoutPanel();
-            this.studentInput1 = new Schuelerbewertung.Student.StudentInput();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flpButton = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.flpStudentDisplay.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flpButton.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +40,6 @@ namespace Schuelerbewertung
             // flpStudentDisplay
             // 
             this.flpStudentDisplay.AutoScroll = true;
-            this.flpStudentDisplay.Controls.Add(this.studentInput1);
             this.flpStudentDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpStudentDisplay.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpStudentDisplay.Location = new System.Drawing.Point(3, 3);
@@ -50,15 +47,6 @@ namespace Schuelerbewertung
             this.flpStudentDisplay.Size = new System.Drawing.Size(737, 408);
             this.flpStudentDisplay.TabIndex = 0;
             this.flpStudentDisplay.WrapContents = false;
-            // 
-            // studentInput1
-            // 
-            this.studentInput1.AutoSize = true;
-            this.studentInput1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentInput1.Location = new System.Drawing.Point(3, 3);
-            this.studentInput1.Name = "studentInput1";
-            this.studentInput1.Size = new System.Drawing.Size(621, 709);
-            this.studentInput1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -104,8 +92,6 @@ namespace Schuelerbewertung
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StudentControl";
             this.Size = new System.Drawing.Size(743, 449);
-            this.flpStudentDisplay.ResumeLayout(false);
-            this.flpStudentDisplay.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flpButton.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -115,7 +101,6 @@ namespace Schuelerbewertung
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flpStudentDisplay;
-        private Student.StudentInput studentInput1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flpButton;
         private System.Windows.Forms.Button btnSubmit;
