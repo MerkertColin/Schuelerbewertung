@@ -29,16 +29,7 @@ namespace Schuelerbewertung
         /// </summary>
         private void InitializeComponent()
         {
-            this.teacherControl1 = new Schuelerbewertung.TeacherControl();
             this.SuspendLayout();
-            // 
-            // teacherControl1
-            // 
-            this.teacherControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.teacherControl1.Location = new System.Drawing.Point(0, 0);
-            this.teacherControl1.Name = "teacherControl1";
-            this.teacherControl1.Size = new System.Drawing.Size(800, 450);
-            this.teacherControl1.TabIndex = 0;
             // 
             // Form1
             // 

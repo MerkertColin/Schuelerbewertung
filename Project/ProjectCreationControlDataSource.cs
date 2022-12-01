@@ -16,7 +16,7 @@ namespace Schuelerbewertung {
             con.ConnectionString = conString;
             con.Open();
             var commandStudent = con.CreateCommand();
-            commandStudent.CommandText = "SELECT * FROM schueler";
+            commandStudent.CommandText = "SELECT * FROM schueler LEFT JOIN schueler_durchschnitt ON schueler.SchuelerID = schueler_durchschnitt.SchuelerID";
             dt = new DataTable();
             dt.Load(commandStudent.ExecuteReader());
         }

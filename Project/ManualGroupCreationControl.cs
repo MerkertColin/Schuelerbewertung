@@ -23,7 +23,6 @@ namespace Schuelerbewertung {
                     dataSource = value;
 
                     initializeComboxes();
-                    intializeDataBindings();
                 }
             }
         }
@@ -40,10 +39,20 @@ namespace Schuelerbewertung {
                 Students = students
             });
 
-            dataSource.Students.Remove((Student)member1ComboBox.SelectedItem);
+			dataSource.Students.Remove((Student)member1ComboBox.SelectedItem);
 			dataSource.Students.Remove((Student)member2ComboBox.SelectedItem);
 			dataSource.Students.Remove((Student)member3ComboBox.SelectedItem);
 			dataSource.Students.Remove((Student)member4ComboBox.SelectedItem);
+
+			member1ComboBox.Items.Remove(member1ComboBox.SelectedItem);
+			member2ComboBox.Items.Remove(member2ComboBox.SelectedItem);
+			member3ComboBox.Items.Remove(member3ComboBox.SelectedItem);
+			member4ComboBox.Items.Remove(member4ComboBox.SelectedItem);
+
+			member1ComboBox.Enabled = true;
+			member2ComboBox.Enabled = true;
+			member3ComboBox.Enabled = true;
+			member4ComboBox.Enabled = true;
 		}
 
 		private void initializeComboxes() {
@@ -51,10 +60,6 @@ namespace Schuelerbewertung {
 			member2ComboBox.Items.AddRange(dataSource.Students.ToArray());
 			member3ComboBox.Items.AddRange(dataSource.Students.ToArray());
 			member4ComboBox.Items.AddRange(dataSource.Students.ToArray());
-		}
-
-		private void intializeDataBindings() {
-
 		}
 
         private void handleMember1ComboBoxSelectedIndexChanged(object sender, EventArgs e) {
